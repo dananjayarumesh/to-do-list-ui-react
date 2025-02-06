@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+   task-management-ui:
+      image: task-management-ui:0.1
+      build: .
+      container_name: task-management-ui-dev
+      hostname: task-management-ui.local
+      working_dir: /work
+      ports:
+        - "4100:4100"
+      volumes:
+         - ..:/work
+      environment:
+         - ENVIRONMENT=local
+      command: bash -c "sleep infinity"
+      networks:
+         - private
+
+networks:
+   private:

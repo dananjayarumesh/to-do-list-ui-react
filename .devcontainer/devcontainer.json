@@ -1,0 +1,32 @@
+// See https://aka.ms/vscode-remote/devcontainer.json for format details.
+{
+   "name": "task-management-ui",
+   "dockerComposeFile": [
+      "docker-compose.yml"
+   ],
+   // The name of the following service has to match one of the services in docker-compose.yml
+   "service": "task-management-ui",
+   "workspaceFolder": "/work",
+   "customizations": {
+      // Configure properties specific to VS Code.
+      "vscode": {
+         // Add the IDs of extensions you want installed when the container is created.
+         "extensions": [
+            "bradlc.vscode-tailwindcss",
+            "firsttris.vscode-jest-runner",
+            "eamodio.gitlens",
+            "editorconfig.editorconfig",
+            "ms-vsliveshare.vsliveshare",
+            "naumovs.color-highlight",
+            "ms-azuretools.vscode-docker",
+            "dbaeumer.vscode-eslint"
+         ],
+         "settings": {
+            "remote.autoForwardPorts": false,
+            "remote.restoreForwardedPorts": false
+         }
+      }
+   },
+   "shutdownAction": "stopCompose",
+   "remoteUser": "node"
+}
