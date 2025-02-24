@@ -1,14 +1,24 @@
-import { memo, useContext, useEffect } from "react";
+import { memo, useContext, useEffect, useMemo, useState } from "react";
 import ThemeContext from "../context/ThemeProvider";
 import { People } from "../dto/People";
 import ListView from "../components/ListView";
+import { useDebugTestHook } from "../hooks/useDebugTestHook";
 
-function MainPage() {
+const MainPage: React.FC = () => {
 
     const { theme, setTheme } = useContext(ThemeContext);
 
+    const { count, increment } = useDebugTestHook();
+
+    const [filterText, setFilterText] = useState('');
+
+    const expensiveCalculation = useMemo(() => {
+        console.log('expensive calculation');
+        return filterText.length;
+    }, [filterText]);
+
     useEffect(() => {
-       console.log(theme);
+        console.log(theme);
     });
 
     const people: People[] = [
@@ -70,7 +80,12 @@ function MainPage() {
 
     return (
         <div className="container mx-auto">
+            {count}
+            <br></br>
+            {expensiveCalculation}
+            <button className="bg-blue-500 text-white" onClick={increment}>Increment</button>
             <button className="bg-blue-500 text-white" onClick={() => setTheme('dark')}>Change Theme</button>
+            <input type="text" className="border border-gray-300" value={filterText} onChange={(e) => setFilterText(e.target.value)} />
             <ListViewMemo people={people} />
         </div>
     )

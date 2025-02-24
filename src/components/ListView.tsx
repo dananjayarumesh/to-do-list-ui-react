@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { People } from "../dto/People"
 
-const ListView = (
+const ListView: React.FC<{ people: People[] }> = (
     { people }: { people: People[] }
 ) => {
 
