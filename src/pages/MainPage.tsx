@@ -1,4 +1,13 @@
+import { useContext, useEffect } from "react";
+import ThemeContext from "../context/ThemeProvider";
+
 function MainPage() {
+
+    const { theme, setTheme } = useContext(ThemeContext);
+
+    useEffect(() => {
+        console.log('Theme:', theme);
+    }, [theme]);
 
     const people = [
         {
@@ -57,6 +66,8 @@ function MainPage() {
 
     return (
         <div className="container mx-auto">
+
+            <button className="bg-blue-500 text-white" onClick={() => setTheme('dark')}>Change Theme</button>
 
             <ul role="list" className="divide-y divide-gray-100">
                 {people.map((person) => (
