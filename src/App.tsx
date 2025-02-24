@@ -1,7 +1,7 @@
-import { lazy, Profiler, StrictMode, Suspense } from 'react'
+import React, { lazy, Profiler, StrictMode, Suspense } from 'react'
 import { ThemeProvider } from './context/ThemeProvider';
 
-function App() {
+const App: React.FC = () => {
 
   const onRender = (id: string, phase: string, actualDuration: number, baseDuration: number, startTime: number, commitTime: number) => {
     console.log(id, phase, actualDuration, baseDuration, startTime, commitTime);
